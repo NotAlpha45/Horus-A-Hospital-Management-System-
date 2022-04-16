@@ -1,6 +1,6 @@
 CREATE TABLE Patients (
     patient_id INTEGER PRIMARY KEY NOT NULL,
-    patient_name VARCHAR(255) NOT NULL,
+    patient_name VARCHAR2(255) NOT NULL,
     patient_gender VARCHAR2(7) NOT NULL,
     patient_blood_group VARCHAR2(5) NOT NULL,
     patient_dob DATE NOT NULL,
@@ -10,9 +10,9 @@ CREATE TABLE Patients (
 
 CREATE TABLE Doctors (
     doctor_id INTEGER PRIMARY KEY NOT NULL,
-    doctor_name VARCHAR(255) NOT NULL,
+    doctor_name VARCHAR2(255) NOT NULL,
     doctor_designation VARCHAR2(255) NOT NULL,
-    license_no INTEGER NOT NULL,
+    license_no NUMBER NOT NULL,
     doctor_phone_number NUMBER(11,0) NOT NULL,
     doctor_address VARCHAR2(255) NOT NULL
 );
