@@ -12,7 +12,7 @@ CREATE TABLE Doctors (
     doctor_id INTEGER PRIMARY KEY NOT NULL,
     doctor_name VARCHAR(255) NOT NULL,
     doctor_designation VARCHAR2(255) NOT NULL,
-    license_year INTEGER NOT NULL,
+    license_no INTEGER NOT NULL,
     doctor_phone_number NUMBER(11,0) NOT NULL,
     doctor_address VARCHAR2(255) NOT NULL
 );
