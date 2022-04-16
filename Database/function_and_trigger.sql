@@ -37,7 +37,7 @@ IS
 
 BEGIN
     SELECT MAX(doctor_id) INTO next_seq FROM Doctors 
-    WHERE license_no = license_number;
+    WHERE doctor_license_no = license_number;
 
     IF next_seq != 0 THEN
         next_seq := next_seq + 1;
@@ -58,5 +58,5 @@ END;
 CREATE OR REPLACE TRIGGER generate_doctor_id BEFORE INSERT 
 ON Doctors FOR EACH ROW 
 BEGIN
-    :NEW.doctor_id := generate_doctor_id(:NEW.license_no);
+    :NEW.doctor_id := generate_doctor_id(:NEW.doctor_license_no);
 END;
