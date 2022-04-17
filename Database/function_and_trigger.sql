@@ -1,8 +1,8 @@
 -- Function and trigger for patient id.
 CREATE OR REPLACE FUNCTION generate_patient_id (phone_no NUMBER)
-RETURN INTEGER
+RETURN NUMBER
 IS
-    next_seq INTEGER;
+    next_seq NUMBER;
 
 BEGIN
     SELECT MAX(patient_id) INTO next_seq FROM Patients 
@@ -34,9 +34,9 @@ END;
 
 -- Function and trigger for doctor id.
 CREATE OR REPLACE FUNCTION generate_doctor_id (license_number NUMBER)
-RETURN INTEGER
+RETURN NUMBER
 IS
-    next_seq INTEGER;
+    next_seq NUMBER;
 
 BEGIN
     SELECT MAX(doctor_id) INTO next_seq FROM Doctors 
@@ -68,13 +68,13 @@ END;
 /
 
 -- Function and trigger for diagnosis id.
-CREATE OR REPLACE FUNCTION generate_diag_id(diagnostics_date DATE, diag_patient_id INTEGER)
-RETURN INTEGER
+CREATE OR REPLACE FUNCTION generate_diag_id(diagnostics_date DATE, diag_patient_id NUMBER)
+RETURN NUMBER
 IS 
 
-    diag_day INTEGER := EXTRACT (DAY FROM diagnostics_date);
-    diag_month INTEGER := EXTRACT (MONTH FROM diagnostics_date);
-    diag_year INTEGER := EXTRACT (YEAR FROM diagnostics_date);
+    diag_day NUMBER := EXTRACT (DAY FROM diagnostics_date);
+    diag_month NUMBER := EXTRACT (MONTH FROM diagnostics_date);
+    diag_year NUMBER := EXTRACT (YEAR FROM diagnostics_date);
 
 
 BEGIN 
@@ -98,13 +98,13 @@ END;
 /
 
 -- Function and trigger for appintment ID.
-CREATE OR REPLACE FUNCTION generate_app_id(app_date DATE, app_doctor_id INTEGER)
-RETURN INTEGER
+CREATE OR REPLACE FUNCTION generate_app_id(app_date DATE, app_doctor_id NUMBER)
+RETURN NUMBER
 IS 
 
-    app_day INTEGER := EXTRACT (DAY FROM app_date);
-    app_month INTEGER := EXTRACT (MONTH FROM app_date);
-    app_year INTEGER := EXTRACT (YEAR FROM app_date);
+    app_day NUMBER := EXTRACT (DAY FROM app_date);
+    app_month NUMBER := EXTRACT (MONTH FROM app_date);
+    app_year NUMBER := EXTRACT (YEAR FROM app_date);
 
 
 BEGIN 
