@@ -1,5 +1,7 @@
 import cx_Oracle
 
+print("Hello from connector!")
+
 
 def get_connecetion(username, password):
     try:
