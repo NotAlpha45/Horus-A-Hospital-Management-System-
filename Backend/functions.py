@@ -147,7 +147,8 @@ def generate_diagnostics_report(connection, diag_id):
 
     query_result = cursor.execute(
         f'''
-        SELECT patient_name, doctor_name, diag_date, diag_details, diag_remarks FROM Diagnostics 
+        SELECT patient_name, doctor_name, TO_CHAR(diag_date, \'DD-MON-YYYY\'), diag_details, diag_remarks 
+        FROM Diagnostics 
         WHERE diag_id = :dia_id
         ''',
         [diag_id]
@@ -155,43 +156,47 @@ def generate_diagnostics_report(connection, diag_id):
 
     if query_result:
         return f'''
-        Date : 
-        ------
-        {query_result[0][2]}
-        ------------------------
-        Patient name :
-        ---------------
-        {query_result[0][0]}
-        -------------------
-        Doctor name :
-        -------------
-        {query_result[0][1]}
-        -------------------
-        Diag remarks : 
-        --------------
-        {query_result[0][4]}
-        --------------------------------
-        Diag details : 
-        {query_result[0][3]}
+Date : {query_result[0][2]}
+------------------------
+Patient name : {query_result[0][0]}
+-------------------
+Doctor name : {query_result[0][1]}
+-------------------
+Diag remarks : 
+--------------
+{query_result[0][4]}
+--------------------------------
+Diag details : 
+--------------
+{query_result[0][3]}
         '''
     else:
         return "No report found"
 
 
-def make_appointment(connection, doctor_id, patient_id, date):
+def make_appointment(connection, **kwargs):
     cursor = connection.cursor()
     try:
         cursor.execute(
             '''
-            INSERT INTO Appointments (patient_id, doctor_id, app_date)
-            VALUES (:pid, :did, TO_DATE(:pdate, \'DD-MON-YYYY\'))
+            INSERT INTO Appointments (patient_id, patient_name, doctor_id, doctor_name, app_date)
+            VALUES (:pid, :p_name, :did, :d_name, TO_DATE(:pdate, \'DD-MON-YYYY\'))
             ''',
-            [patient_id, doctor_id, date]
+            [
+                kwargs["patient_id"],
+                kwargs["patient_name"],
+                kwargs["doctor_id"],
+                kwargs["doctor_name"],
+                kwargs["app_date"]
+            ]
         )
+
         connection.commit()
 
-        print(f"Appointment created on {date}")
-        return f"Appointment created on {date}"
+        date = kwargs["app_date"]
+
+        print(f"Appointment made on {date}")
+        return f"Appointment made on {date}"
 
     except cx_Oracle.IntegrityError:
         print("Appointment already exists")
@@ -219,7 +224,8 @@ def get_patient_appointments(connection, patient_id):
     cursor = connection.cursor()
     query_result = cursor.execute(
         '''
-        SELECT * FROM Appointments
+        SELECT app_id, patient_id, patient_name, doctor_id, doctor_name, TO_CHAR(app_date, \'DD-MON-YYYY\') 
+        FROM Appointments
         WHERE patient_id = :pid
         ''',
         [patient_id]
@@ -231,11 +237,42 @@ def get_patient_appointments(connection, patient_id):
         return 0
 
 
+def get_doctor_appointments(connection, doctor_id):
+    cursor = connection.cursor()
+    query_result = cursor.execute(
+        '''
+        SELECT app_id, patient_id, patient_name, doctor_id, doctor_name, TO_CHAR(app_date, \'DD-MON-YYYY\') 
+        FROM Appointments
+        WHERE doctor_id = :pid
+        ''',
+        [doctor_id]
+    ).fetchall()
+
+    if query_result:
+        return query_result
+    else:
+        return 0
+
+
+# print(
+#     get_doctor_appointments(
+#         connection,
+#         get_doctor_id(connection, "Sadik", "01778654757")
+#     )
+# )
+# print(get_patient_appointments(
+#     connection,
+#     get_patient_id(connection, "Sakibul",
+#                    "15-DEC-2000", "01798654757")
+# ))
 # make_appointment(
 #     connection,
-#     get_doctor_id(connection, "Sadik", "01778654757"),
-#     get_patient_id(connection, "Sakibul", "15-DEC-00", "01798654757"),
-#     "16-APR-2022"
+#     patient_id=get_patient_id(connection, "Sakibul",
+#                               "15-DEC-2000", "01798654757"),
+#     patient_name="Sakibul",
+#     doctor_id=get_doctor_id(connection, "Sadik", "01778654757"),
+#     doctor_name="Sadik",
+#     app_date="16-APR-2022"
 # )
 
 # print(get_patient_id(connection, "Sakibul", "15-DEC-00", "01798654757"))
@@ -280,16 +317,16 @@ def get_patient_appointments(connection, patient_id):
 
 
 # print(get_doctor_id(connection, "Sadik", "01778654757"))
-enter_diagnostics_entry(
-    connection,
-    patient_id=get_patient_id(connection, "Sakibul",
-                              "15-DEC-00", "01798654757"),
-    patient_name="Sakibul",
-    doctor_id=get_doctor_id(connection, "Sadik", "01778654757"),
-    doctor_name="Sadik",
-    diag_details="Erectile dysfunction",
-    diag_remarks="baccha hobena",
-    diag_date="12-APR-2022"
-)
+# enter_diagnostics_entry(
+#     connection,
+#     patient_id=get_patient_id(connection, "Sakibul",
+#                               "15-DEC-00", "01798654757"),
+#     patient_name="Sakibul",
+#     doctor_id=get_doctor_id(connection, "Sadik", "01778654757"),
+#     doctor_name="Sadik",
+#     diag_details="Erectile dysfunction",
+#     diag_remarks="baccha hobena",
+#     diag_date="12-APR-2022"
+# )
 
 connection.close()
