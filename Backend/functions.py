@@ -103,19 +103,22 @@ def enter_diagnostics_entry(connection, **kwargs):
         # Inserting with bind variables to protect from Injection attacks
         cursor.execute(
             '''
-            INSERT INTO Diagnostics(patient_id, doctor_id, diag_details, diag_remarks, diag_date) 
+            INSERT INTO Diagnostics(patient_id, patient_name, doctor_id, doctor_name, diag_details, diag_remarks, diag_date) 
             VALUES (
-                :p_id, :d_id, :d_det, :d_rem, TO_DATE(:d_addr)
+                :p_id, :p_n, :d_id, :d_n, :d_det, :d_rem, TO_DATE(:d_addr)
             )''',
             [
                 kwargs["patient_id"],
+                kwargs["patient_name"],
                 kwargs["doctor_id"],
+                kwargs["doctor_name"],
                 kwargs["diag_details"],
                 kwargs["diag_remarks"],
                 kwargs["diag_date"]
             ]
         )
         connection.commit()
+        return "Entry Successful"
 
     except KeyError:
         print("The attributes are not correct")
@@ -144,7 +147,7 @@ def generate_diagnostics_report(connection, diag_id):
 
     query_result = cursor.execute(
         f'''
-        SELECT diag_date, diag_details, diag_remarks FROM Diagnostics 
+        SELECT patient_name, doctor_name, diag_date, diag_details, diag_remarks FROM Diagnostics 
         WHERE diag_id = :dia_id
         ''',
         [diag_id]
@@ -154,14 +157,22 @@ def generate_diagnostics_report(connection, diag_id):
         return f'''
         Date : 
         ------
-        {query_result[0][0]}
+        {query_result[0][2]}
         ------------------------
+        Patient name :
+        ---------------
+        {query_result[0][0]}
+        -------------------
+        Doctor name :
+        -------------
+        {query_result[0][1]}
+        -------------------
         Diag remarks : 
         --------------
-        {query_result[0][2]}
+        {query_result[0][4]}
         --------------------------------
         Diag details : 
-        {query_result[0][1]}
+        {query_result[0][3]}
         '''
     else:
         return "No report found"
@@ -204,12 +215,28 @@ def get_appointment_id(connection, doctor_id, patient_id, date):
         return 0
 
 
-make_appointment(
-    connection,
-    get_doctor_id(connection, "Sadik", "01778654757"),
-    get_patient_id(connection, "Sakibul", "15-DEC-00", "01798654757"),
-    "16-APR-2022"
-)
+def get_patient_appointments(connection, patient_id):
+    cursor = connection.cursor()
+    query_result = cursor.execute(
+        '''
+        SELECT * FROM Appointments
+        WHERE patient_id = :pid
+        ''',
+        [patient_id]
+    ).fetchall()
+
+    if query_result:
+        return query_result
+    else:
+        return 0
+
+
+# make_appointment(
+#     connection,
+#     get_doctor_id(connection, "Sadik", "01778654757"),
+#     get_patient_id(connection, "Sakibul", "15-DEC-00", "01798654757"),
+#     "16-APR-2022"
+# )
 
 # print(get_patient_id(connection, "Sakibul", "15-DEC-00", "01798654757"))
 # print(get_diagnostics_id(
@@ -253,14 +280,16 @@ make_appointment(
 
 
 # print(get_doctor_id(connection, "Sadik", "01778654757"))
-# enter_diagnostics_entry(
-#     connection,
-#     patient_id=get_patient_id(connection, "Sakibul",
-#                               "15-DEC-00", "01798654757"),
-#     doctor_id=get_doctor_id(connection, "Sadik", "01778654757"),
-#     diag_details="Erectile dysfunction",
-#     diag_remarks="baccha hobena",
-#     diag_date="12-APR-2022"
-# )
+enter_diagnostics_entry(
+    connection,
+    patient_id=get_patient_id(connection, "Sakibul",
+                              "15-DEC-00", "01798654757"),
+    patient_name="Sakibul",
+    doctor_id=get_doctor_id(connection, "Sadik", "01778654757"),
+    doctor_name="Sadik",
+    diag_details="Erectile dysfunction",
+    diag_remarks="baccha hobena",
+    diag_date="12-APR-2022"
+)
 
 connection.close()

@@ -20,7 +20,9 @@ CREATE TABLE Doctors (
 CREATE TABLE Appointments (
     app_id NUMBER PRIMARY KEY NOT NULL,
     patient_id NUMBER,
+    patient_name VARCHAR2(255) NOT NULL,
     doctor_id NUMBER,
+    doctor_name VARCHAR2(255) NOT NULL,
     app_date DATE,
     FOREIGN KEY (patient_id) REFERENCES Patients (patient_id) ON DELETE CASCADE,
     FOREIGN KEY (doctor_id) REFERENCES Doctors (doctor_id) ON DELETE CASCADE
@@ -29,7 +31,9 @@ CREATE TABLE Appointments (
 CREATE TABLE Diagnostics (
     diag_id NUMBER PRIMARY KEY NOT NULL,
     patient_id NUMBER NOT NULL,
+    patient_name VARCHAR2(255) NOT NULL,
     doctor_id NUMBER NOT NULL,
+    doctor_name VARCHAR2(255) NOT NULL,
     diag_details VARCHAR2(3000) NOT NULL,
     diag_remarks VARCHAR2(3000) NOT NULL,
     diag_date DATE NOT NULL,
