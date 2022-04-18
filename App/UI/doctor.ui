@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>403</width>
-    <height>455</height>
+    <width>800</width>
+    <height>900</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,14 +20,14 @@ color: white;</string>
   <widget class="QLabel" name="label_7">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>20</y>
-     <width>91</width>
-     <height>21</height>
+     <x>140</x>
+     <y>30</y>
+     <width>151</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 12pt &quot;Haettenschweiler&quot;;</string>
+    <string notr="true">font: 20pt &quot;Haettenschweiler&quot;;</string>
    </property>
    <property name="text">
     <string>Doctor Name:</string>
@@ -36,14 +36,14 @@ color: white;</string>
   <widget class="QLabel" name="label_8">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>70</y>
-     <width>91</width>
-     <height>21</height>
+     <x>140</x>
+     <y>100</y>
+     <width>141</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 12pt &quot;Haettenschweiler&quot;;</string>
+    <string notr="true">font: 20pt &quot;Haettenschweiler&quot;;</string>
    </property>
    <property name="text">
     <string>Designation:</string>
@@ -52,14 +52,14 @@ color: white;</string>
   <widget class="QLabel" name="label_9">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>120</y>
-     <width>91</width>
-     <height>21</height>
+     <x>140</x>
+     <y>170</y>
+     <width>171</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 12pt &quot;Haettenschweiler&quot;;</string>
+    <string notr="true">font: 20pt &quot;Haettenschweiler&quot;;</string>
    </property>
    <property name="text">
     <string>License</string>
@@ -68,92 +68,112 @@ color: white;</string>
   <widget class="QLabel" name="label_10">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>170</y>
-     <width>91</width>
-     <height>21</height>
+     <x>140</x>
+     <y>250</y>
+     <width>161</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 12pt &quot;Haettenschweiler&quot;;</string>
+    <string notr="true">font: 20pt &quot;Haettenschweiler&quot;;</string>
    </property>
    <property name="text">
-    <string>Phone Number:</string>
+    <string>Phone Number</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_11">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>220</y>
-     <width>91</width>
-     <height>21</height>
+     <x>140</x>
+     <y>330</y>
+     <width>121</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 12pt &quot;Haettenschweiler&quot;;</string>
+    <string notr="true">font: 20pt &quot;Haettenschweiler&quot;;</string>
    </property>
    <property name="text">
-    <string>Address:</string>
+    <string>Address</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="doctorname">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>20</y>
-     <width>151</width>
-     <height>20</height>
+     <x>420</x>
+     <y>40</y>
+     <width>321</width>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:white;
+color: black;</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="designation">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>70</y>
-     <width>151</width>
-     <height>20</height>
+     <x>420</x>
+     <y>110</y>
+     <width>321</width>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:white;
+color: black;</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="license">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>120</y>
-     <width>151</width>
-     <height>20</height>
+     <x>420</x>
+     <y>180</y>
+     <width>321</width>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:white;
+color: black;</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="phone_number">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>170</y>
-     <width>151</width>
-     <height>20</height>
+     <x>420</x>
+     <y>250</y>
+     <width>321</width>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:white;
+color: black;</string>
    </property>
   </widget>
   <widget class="QTextEdit" name="address">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>220</y>
-     <width>151</width>
-     <height>71</height>
+     <x>420</x>
+     <y>340</y>
+     <width>321</width>
+     <height>111</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:white;
+color: black;</string>
    </property>
   </widget>
   <widget class="QPushButton" name="doctorsubmitbutton">
    <property name="geometry">
     <rect>
-     <x>60</x>
-     <y>370</y>
-     <width>121</width>
-     <height>41</height>
+     <x>150</x>
+     <y>530</y>
+     <width>191</width>
+     <height>71</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -169,10 +189,10 @@ font: 20pt &quot;Haettenschweiler&quot;;</string>
   <widget class="QPushButton" name="gobackdoctor">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>370</y>
-     <width>121</width>
-     <height>41</height>
+     <x>500</x>
+     <y>530</y>
+     <width>161</width>
+     <height>71</height>
     </rect>
    </property>
    <property name="styleSheet">

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>450</height>
+    <width>681</width>
+    <height>677</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,110 +19,119 @@
   <widget class="QLineEdit" name="patientname">
    <property name="geometry">
     <rect>
-     <x>190</x>
-     <y>50</y>
-     <width>151</width>
-     <height>20</height>
+     <x>240</x>
+     <y>49</y>
+     <width>411</width>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:white;</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>30</x>
      <y>100</y>
-     <width>91</width>
-     <height>21</height>
+     <width>101</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 12pt &quot;Haettenschweiler&quot;;</string>
+    <string notr="true">font: 20pt &quot;Haettenschweiler&quot;;</string>
    </property>
    <property name="text">
-    <string>Patient Gender:</string>
+    <string>Gender</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>30</x>
      <y>150</y>
-     <width>101</width>
-     <height>21</height>
+     <width>141</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 12pt &quot;Haettenschweiler&quot;;</string>
+    <string notr="true">font: 20pt &quot;Haettenschweiler&quot;;</string>
    </property>
    <property name="text">
-    <string>Patient Blood Group:</string>
+    <string>Blood Group</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>30</x>
      <y>200</y>
-     <width>111</width>
-     <height>21</height>
+     <width>151</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 12pt &quot;Haettenschweiler&quot;;</string>
+    <string notr="true">font: 20pt &quot;Haettenschweiler&quot;;</string>
    </property>
    <property name="text">
-    <string>Patient Date Of Birth:</string>
+    <string>Date Of Birth</string>
    </property>
   </widget>
   <widget class="QDateEdit" name="dob">
    <property name="geometry">
     <rect>
-     <x>190</x>
+     <x>240</x>
      <y>200</y>
-     <width>110</width>
-     <height>22</height>
+     <width>101</width>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:white;</string>
+   </property>
+   <property name="displayFormat">
+    <string>dd-MMM-yyyy</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_5">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>30</x>
      <y>250</y>
-     <width>121</width>
-     <height>21</height>
+     <width>191</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 12pt &quot;Haettenschweiler&quot;;</string>
+    <string notr="true">font: 20pt &quot;Haettenschweiler&quot;;</string>
    </property>
    <property name="text">
-    <string>Patient Phone Number:</string>
+    <string>Phone Number</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_6">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>300</y>
-     <width>121</width>
-     <height>21</height>
+     <x>30</x>
+     <y>330</y>
+     <width>181</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 12pt &quot;Haettenschweiler&quot;;</string>
+    <string notr="true">font: 20pt &quot;Haettenschweiler&quot;;</string>
    </property>
    <property name="text">
-    <string>Patient Address:</string>
+    <string>Patient Address</string>
    </property>
   </widget>
   <widget class="QRadioButton" name="radioButton">
    <property name="geometry">
     <rect>
-     <x>190</x>
+     <x>240</x>
      <y>100</y>
-     <width>82</width>
-     <height>20</height>
+     <width>111</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="text">
@@ -132,10 +141,10 @@
   <widget class="QRadioButton" name="radioButton_2">
    <property name="geometry">
     <rect>
-     <x>290</x>
-     <y>100</y>
-     <width>82</width>
-     <height>20</height>
+     <x>380</x>
+     <y>110</y>
+     <width>101</width>
+     <height>21</height>
     </rect>
    </property>
    <property name="text">
@@ -145,11 +154,14 @@
   <widget class="QComboBox" name="BG">
    <property name="geometry">
     <rect>
-     <x>190</x>
+     <x>240</x>
      <y>150</y>
-     <width>69</width>
-     <height>22</height>
+     <width>101</width>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:white;</string>
    </property>
    <item>
     <property name="text">
@@ -195,30 +207,37 @@
   <widget class="QLineEdit" name="phonenumber">
    <property name="geometry">
     <rect>
-     <x>190</x>
+     <x>240</x>
      <y>250</y>
-     <width>151</width>
-     <height>21</height>
+     <width>411</width>
+     <height>41</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:white;</string>
    </property>
   </widget>
   <widget class="QTextEdit" name="address">
    <property name="geometry">
     <rect>
-     <x>190</x>
-     <y>300</y>
-     <width>151</width>
-     <height>71</height>
+     <x>240</x>
+     <y>340</y>
+     <width>411</width>
+     <height>91</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:white;
+font: 8pt &quot;Mongolian Baiti&quot;;</string>
    </property>
   </widget>
   <widget class="QPushButton" name="goback">
    <property name="geometry">
     <rect>
-     <x>230</x>
-     <y>390</y>
-     <width>121</width>
-     <height>41</height>
+     <x>440</x>
+     <y>520</y>
+     <width>161</width>
+     <height>71</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -234,26 +253,26 @@ font: 20pt &quot;Haettenschweiler&quot;;</string>
   <widget class="QLabel" name="label_7">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>30</x>
      <y>50</y>
-     <width>91</width>
-     <height>21</height>
+     <width>151</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 12pt &quot;Haettenschweiler&quot;;</string>
+    <string notr="true">font: 20pt &quot;Haettenschweiler&quot;;</string>
    </property>
    <property name="text">
-    <string>Patient Name:</string>
+    <string>Patient Name</string>
    </property>
   </widget>
   <widget class="QPushButton" name="patientsubmitbutton">
    <property name="geometry">
     <rect>
-     <x>60</x>
-     <y>390</y>
-     <width>121</width>
-     <height>41</height>
+     <x>130</x>
+     <y>520</y>
+     <width>191</width>
+     <height>71</height>
     </rect>
    </property>
    <property name="styleSheet">
